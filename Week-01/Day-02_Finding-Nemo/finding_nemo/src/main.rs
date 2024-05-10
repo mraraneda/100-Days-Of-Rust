@@ -8,6 +8,7 @@ fn main() {
         .read_line(&mut line)
         .expect("Failed to read line");
 
+    // enumerate() retorna una tupla  (i, val)
     for (i, word) in line.split_whitespace().enumerate() {
         if word.eq("Nemo") {
             println!("I found Nemo at {}!", i+1);
