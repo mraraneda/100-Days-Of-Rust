@@ -1,24 +1,19 @@
 use std::io;
 
 fn main() {
-    loop {
-        println!("Please input your age in years!");
+    println!("Please input your string");
 
-        let mut guess = String::new();
+    let mut line = String::new();
+    io::stdin()
+        .read_line(&mut line)
+        .expect("Failed to read line");
 
-        io::stdin().read_line(&mut guess).expect("Could not read age. Make you an integer is used.");
-
-        let guess: u32 = match guess.trim().parse() {
-            Ok(num) => num,
-            Err(_) => continue,
-        };
-
-        let age: u32 = to_days(guess);
-
-        println!("You are roughly {age} days old!")
+    for (i, word) in line.split_whitespace().enumerate() {
+        if word.eq("Nemo") {
+            println!("I found Nemo at {}!", i+1);
+            return;
+        }
     }
-}
 
-fn to_days(years: u32) -> u32 {
-    years * 365
+    println!("I can't find \"Nemo\" :(");
 }
